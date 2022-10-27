@@ -1,0 +1,8 @@
+<button
+  [attr.buttonSize]="buttonSize"
+  type="button"
+  [ngClass]="classes"
+  [ngStyle]="{ 'background-color': backgroundColor }"
+  (click)="onClick.emit($event)">
+  {{ label }}
+</button>
