@@ -1,0 +1,55 @@
+:host {
+
+  button {
+    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    border: 0;
+    border-radius: 3em;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+
+    transition: background 0.8s;
+  }
+
+}
+
+
+[buttonStyle="primary"] {
+  color: white;
+  background-color: #1ea7fd;
+
+  &:hover {
+    background-color: #47a7f5;
+    background-image: radial-gradient(circle, transparent 1%, #47a7f5 1%);
+    background-position: center;
+    background-size: 15000%;
+    }
+
+  &:active {
+    background-color: #6eb9f7;
+    background-size: 100%;
+    transition: background 0s;
+  }
+}
+
+[buttonStyle="secondary"] {
+  color: #333;
+  background-color: transparent;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+}
+
+[buttonSize="small"] {
+  font-size: 12px;
+  padding: 10px 16px;
+}
+
+[buttonSize="medium"] {
+  font-size: 14px;
+  padding: 11px 20px;
+}
+
+[buttonSize="large"] {
+  font-size: 16px;
+  padding: 12px 24px;
+}

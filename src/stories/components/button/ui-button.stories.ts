@@ -1,7 +1,7 @@
 import { moduleMetadata } from '@storybook/angular';
 import { Story, Meta } from '@storybook/angular/types-6-0';
-import UiButtonComponent from './button.component';
-import { UiButtonModule } from './button.module';
+import UiButtonComponent from './ui-button.component';
+import { UiButtonModule } from './ui-button.module';
 
 export default {
   title: 'ui/ui-button',
