@@ -73,8 +73,8 @@
         },
         {
             "name": "UiButtonComponent",
-            "id": "component-UiButtonComponent-fd47a1547a53bdb65505a289c72e16d35f9d7a65890c64fa7e64ff74d838492dc30ffb4779b3696521c600a63d0966116eb64311f5cc0431c111a3fd995152e5",
-            "file": "src/stories/components/button/button.component.ts",
+            "id": "component-UiButtonComponent-3387bc519076549bbfdadb3833cb0105e7679dc163415bace63a254bb232397c05b0937e0939383d9037469f7ed02b52149ed47f54de8266d1c99ceb5cdab22a",
+            "file": "src/stories/components/button/ui-button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -82,11 +82,11 @@
             "providers": [],
             "selector": "ui-button",
             "styleUrls": [
-                "./button.scss"
+                "./ui-button.scss"
             ],
             "styles": [],
             "templateUrl": [
-                "./button.component.html"
+                "./ui-button.component.html"
             ],
             "viewProviders": [],
             "inputsClass": [
@@ -108,6 +108,15 @@
                     "decorators": []
                 },
                 {
+                    "name": "buttonStyle",
+                    "defaultValue": "'primary'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "\"primary\" | \"secondary\"",
+                    "decorators": []
+                },
+                {
                     "name": "isPrimary",
                     "defaultValue": "false",
                     "deprecated": false,
@@ -121,7 +130,7 @@
                     "defaultValue": "'Texto'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 23,
                     "type": "string",
                     "decorators": []
                 }
@@ -132,7 +141,7 @@
                     "defaultValue": "new EventEmitter<Event>()",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 23,
+                    "line": 26,
                     "type": "EventEmitter"
                 }
             ],
@@ -145,12 +154,12 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ui-button',\n  templateUrl: './button.component.html',\n  styleUrls: ['./button.scss'],\n})\nexport default class UiButtonComponent {\n\n  @Input()\n  isPrimary = false;\n\n  @Input()\n  backgroundColor?: string;\n\n  @Input()\n  buttonSize: 'small' | 'medium' | 'large' = 'medium';\n\n  @Input()\n  label = 'Texto';\n\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.isPrimary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `${this.buttonSize}`, mode];\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'ui-button',\n  templateUrl: './ui-button.component.html',\n  styleUrls: ['./ui-button.scss'],\n})\nexport default class UiButtonComponent {\n\n  @Input()\n  isPrimary = false;\n\n  @Input()\n  backgroundColor?: string;\n\n  @Input()\n  buttonSize: 'small' | 'medium' | 'large' = 'medium';\n\n  @Input()\n  buttonStyle: 'primary' | 'secondary' = 'primary';\n\n  @Input()\n  label = 'Texto';\n\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.isPrimary ? this.buttonStyle = 'primary' : this.buttonStyle = 'secondary';\n\n    return [ `${this.buttonSize}`, mode];\n  }\n}\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
-                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n\n[buttonSize=\"small\"] {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n\n[buttonSize=\"medium\"] {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n\n[buttonSize=\"large\"] {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
-                    "styleUrl": "./button.scss"
+                    "data": ":host {\n\n  button {\n    font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n    font-weight: 700;\n    border: 0;\n    border-radius: 3em;\n    cursor: pointer;\n    display: inline-block;\n    line-height: 1;\n\n    transition: background 0.8s;\n  }\n\n}\n\n\n[buttonStyle=\"primary\"] {\n  color: white;\n  background-color: #1ea7fd;\n\n  &:hover {\n    background-color: #47a7f5;\n    background-image: radial-gradient(circle, transparent 1%, #47a7f5 1%);\n    background-position: center;\n    background-size: 15000%;\n    }\n\n  &:active {\n    background-color: #6eb9f7;\n    background-size: 100%;\n    transition: background 0s;\n  }\n}\n\n[buttonStyle=\"secondary\"] {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n\n[buttonSize=\"small\"] {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n\n[buttonSize=\"medium\"] {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n\n[buttonSize=\"large\"] {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./ui-button.scss"
                 }
             ],
             "stylesData": "",
@@ -161,11 +170,11 @@
                         "name": "classes",
                         "type": "[]",
                         "returnType": "string[]",
-                        "line": 25
+                        "line": 28
                     }
                 }
             },
-            "templateData": "<button\r\n  [attr.buttonSize]=\"buttonSize\"\r\n  type=\"button\"\r\n  [ngClass]=\"classes\"\r\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n  (click)=\"onClick.emit($event)\">\r\n  {{ label }}\r\n</button>\r\n"
+            "templateData": "<button\r\n  [attr.buttonSize]=\"buttonSize\"\r\n  [attr.buttonStyle]=\"buttonStyle\"\r\n  type=\"button\"\r\n  [ngClass]=\"classes\"\r\n  [ngStyle]=\"{ 'background-color': backgroundColor }\"\r\n  (click)=\"onClick.emit($event)\">\r\n  {{ label }}\r\n</button>\r\n"
         }
     ],
     "modules": [
@@ -255,13 +264,13 @@
         },
         {
             "name": "UiButtonModule",
-            "id": "module-UiButtonModule-bf0d3a2162b9c064b5c3222c7d195dfae5990821def2852a89b55f440d11ebef57b88d8b00a49706b57d052f3dcb15b4addd9d9e843ad97ba41082e377b9ded3",
+            "id": "module-UiButtonModule-8d28320fd1403c10811fc17cfcb15fa9856a695746694ee280a7a52f49238bdeac438e2ddd4d917269842291ec02983c351efed5053ca6e3638621b4cc2c0895",
             "description": "",
             "deprecationMessage": "",
             "deprecated": false,
-            "file": "src/stories/components/button/button.module.ts",
+            "file": "src/stories/components/button/ui-button.module.ts",
             "methods": [],
-            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from \"@angular/core\";\r\nimport UiButtonComponent from \"./button.component\";\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    UiButtonComponent,\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n  ],\r\n  exports: [\r\n    UiButtonComponent,\r\n  ]\r\n})\r\nexport class UiButtonModule {}\r\n",
+            "sourceCode": "import { CommonModule } from '@angular/common';\r\nimport { NgModule } from \"@angular/core\";\r\nimport UiButtonComponent from \"./ui-button.component\";\r\n\r\n\r\n@NgModule({\r\n  declarations: [\r\n    UiButtonComponent,\r\n  ],\r\n  imports: [\r\n    CommonModule,\r\n  ],\r\n  exports: [\r\n    UiButtonComponent,\r\n  ]\r\n})\r\nexport class UiButtonModule {}\r\n",
             "children": [
                 {
                     "type": "providers",
@@ -334,7 +343,7 @@
                 "name": "Large",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/components/button/button.stories.ts",
+                "file": "src/stories/components/button/ui-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -344,7 +353,7 @@
                 "name": "Primary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/components/button/button.stories.ts",
+                "file": "src/stories/components/button/ui-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -363,7 +372,7 @@
                 "name": "Secondary",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/components/button/button.stories.ts",
+                "file": "src/stories/components/button/ui-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -373,7 +382,7 @@
                 "name": "Small",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/components/button/button.stories.ts",
+                "file": "src/stories/components/button/ui-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "",
@@ -383,7 +392,7 @@
                 "name": "Template",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/components/button/button.stories.ts",
+                "file": "src/stories/components/button/ui-button.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story<UiButtonComponent>",
@@ -439,12 +448,12 @@
                     "defaultValue": "{\n  production: true\n}"
                 }
             ],
-            "src/stories/components/button/button.stories.ts": [
+            "src/stories/components/button/ui-button.stories.ts": [
                 {
                     "name": "Large",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/components/button/button.stories.ts",
+                    "file": "src/stories/components/button/ui-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -454,7 +463,7 @@
                     "name": "Primary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/components/button/button.stories.ts",
+                    "file": "src/stories/components/button/ui-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -464,7 +473,7 @@
                     "name": "Secondary",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/components/button/button.stories.ts",
+                    "file": "src/stories/components/button/ui-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -474,7 +483,7 @@
                     "name": "Small",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/components/button/button.stories.ts",
+                    "file": "src/stories/components/button/ui-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "",
@@ -484,7 +493,7 @@
                     "name": "Template",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "src/stories/components/button/button.stories.ts",
+                    "file": "src/stories/components/button/ui-button.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story<UiButtonComponent>",
@@ -553,16 +562,16 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/components/button/button.component.ts",
+                "filePath": "src/stories/components/button/ui-button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "UiButtonComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/6",
+                "coverageCount": "0/7",
                 "status": "low"
             },
             {
-                "filePath": "src/stories/components/button/button.stories.ts",
+                "filePath": "src/stories/components/button/ui-button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -572,7 +581,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/components/button/button.stories.ts",
+                "filePath": "src/stories/components/button/ui-button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -582,7 +591,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/components/button/button.stories.ts",
+                "filePath": "src/stories/components/button/ui-button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -592,7 +601,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/components/button/button.stories.ts",
+                "filePath": "src/stories/components/button/ui-button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -602,7 +611,7 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/components/button/button.stories.ts",
+                "filePath": "src/stories/components/button/ui-button.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
