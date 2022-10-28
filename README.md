@@ -1,5 +1,5 @@
 # StorybookDemo
-Run `npm run storybook`
+Run `npm run storybook` to execute the [Storybook](https://storybook.js.org/docs/angular/get-started/introduction).
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.4.
 
